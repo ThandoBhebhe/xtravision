@@ -8,6 +8,7 @@ body{
 .logo{
     display: block;
     margin: auto;
+    height: 200px
 }
 
 .rentMovieParagraph{
@@ -31,6 +32,40 @@ body{
     margin: 20px;
 }
 
+img.potential-rental{
+    width: 350px;
+    height: auto;
+    display: inline-block;
+    margin: 20px;
+}
+
+
+.card-container-description{
+    width: 800px;
+    height: 531px;
+    display: inline-block;
+    margin: 20px;
+    background-color: #00000078;
+    opacity: 50%;
+}
+
+.description-paragraph{
+    margin: 15% 10px 0;
+    color: white;
+    font-size: 20px;
+}
+
+.potential-image-cover{
+    width: 350px;
+    height: 531px;
+    display: inline-block;
+    margin: 20px;
+    background-color: #00000078
+}
+
+.extra-touch{
+    margin-right: 15px;
+}
 
 .card-body{
     /* outline: solid red 2px; */
