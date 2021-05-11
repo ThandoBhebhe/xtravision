@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-<head xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head >
 
 
     <meta charset="UTF-8">
@@ -13,7 +13,7 @@
 </head>
 <body>
 
-    <h1>Welcome to XtraVision </h1>
+    <h1 th:text="${welcomeMessage}"></h1>
     <a href="www.xtravision.com">Official site</a>
 
     <button class="front-buttons">
