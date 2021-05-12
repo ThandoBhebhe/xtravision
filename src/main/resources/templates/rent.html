@@ -12,7 +12,7 @@
 <body>
 <img class="logo" src="../images/xtra-vision_logo.jpg" alt="xtra-vision logo">
 
-<h3 th:text="${instruction}" class="rentMovieParagraph">Select a com.xtravision.movie to rent</h3>
+<h3 class="rentMovieParagraph">Select a movie to rent</h3>
 <div class="container">
     <div class="row align-items-start">
         <div class="col">
@@ -23,7 +23,7 @@
 <div class="container">
     <div class="row align-items-start">
         <div class="col rentActionButtons">
-            <button type="submit" class="btn btn-success" onclick="selectedMovie"> Rent</button>
+            <a type="button" class="btn btn-success" onclick="selectedMovie" href="potential-rental"> Rent</a>
             <button type="button" class="btn btn-danger ">Return</button>
         </div>
     </div>
