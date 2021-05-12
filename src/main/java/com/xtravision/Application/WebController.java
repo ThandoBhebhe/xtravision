@@ -1,37 +1,53 @@
 package com.xtravision.Application;
 
-import com.xtravision.movie.MoviePreOrder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class WebController {
+    @Autowired //this web controller depends on the PotentialRental class thats why we autowire these two classes together
+    PotentialRentalService potentialRentalService;
 
-    @RequestMapping("/home")
+    @RequestMapping("/home") //home page route
     public String returnIndexPage(Model welcomeModel){
 
         welcomeModel.addAttribute("welcomeMessage","Welcome to XtraVision");
         return "index";
     }
 
-    @RequestMapping("/rent")
-    public String returnRentPage(Model rentalInstructorModel){
+    @RequestMapping("/rent") //rental page route
+    public String returnRentPage(Model model){
 
-        rentalInstructorModel.addAttribute("instruction", "Select a com.xtravision.movie and click rent");
+        model.addAttribute("instruction", "Select a com.xtravision.movie and click rent");
         return "rent";
     }
 
-//    @RequestMapping(method = RequestMethod.POST, value = "/potentialRental")
-//    public String returnPotenialRentalPage(@RequestBody MoviePreOrder moviePreOrder){
-//
-//
-//
-//        return "potentialRental";
-//    }
-    @RequestMapping("/potentialRental")
+    @PostMapping("/addprental") // add potentialRental
+    @ResponseBody
+    public String addPotentialRental(@RequestBody PotentialRental potentialRentalMovie){
+
+        potentialRentalService.createPotentialRentals(potentialRentalMovie);
+        return "Success";
+    }
+
+    @RequestMapping("getprentals") //get potential rentals
+    @ResponseBody
+    public List<PotentialRental> getPotentialRentals(){
+        return potentialRentalService.getPotentialRentals();
+    }
+
+    @RequestMapping("getprentalbn/{name}") //get potential rental by name
+    @ResponseBody
+    public PotentialRental getPotentialRentalsByName(@PathVariable String name){
+        return potentialRentalService.getPotentialRentalByName(name);
+    }
+
+    @RequestMapping("/potential-rental") //potential rent page route
+
     public String returnPotenialRentalPage(){
 
         return "potentialRental";
