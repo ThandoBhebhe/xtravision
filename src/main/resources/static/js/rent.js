@@ -20,7 +20,7 @@ function getMovies(){
 
         for (movieAtIndex=0;movieAtIndex<data.d.length;movieAtIndex++){
 
-            moviesArray.push(data.d[movieAtIndex])
+            moviesArray.push(data.d[movieAtIndex]) //adding movies that come from the api to my movie moviesArray
         }
         let movie = moviesArray.map((movie)=>{
             console.log(movie)
@@ -49,11 +49,29 @@ let clickedMovieImage
 function setClickedMovie(movieName, movieImage){
     clickedMovieName = movieName;
     clickedMovieImage = movieImage
-    alert(clickedMovieName+movieImage);
+    console.log(clickedMovieName+movieImage);
 
 
 }
 
 function selectedMovie(){
+    potentialMovieObject = {
+                                movieName: clickedMovieName,
+                                movieCover:clickedMovieImage
+                            }
+
 //    make a post request to the backend with movie name and cover
+    fetch('http://localhost:8080/addprental',{
+
+        method: 'POST',
+        headers:{
+            'Accept': 'application/json',
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify(potentialMovieObject)
+
+    }).then( function (response){
+        console.log('posted to '+JSON.stringify(potentialMovieObject))
+        console.log('Post request complete', response)
+    })
 }
