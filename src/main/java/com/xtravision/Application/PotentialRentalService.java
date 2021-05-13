@@ -19,7 +19,6 @@ public class PotentialRentalService {
 
     //go through the potentialRentals stream and get a movie that matches the given name
     public PotentialRental getPotentialRentalByName(String name){
-        createPotentialRentals(new PotentialRental("Ironman","imageUrl"));
         return potentialRentals.stream().filter(m ->m.getMovieName().equals(name)).findFirst().get();
     }
 
