@@ -40,19 +40,33 @@ public class WebController {
         return potentialRentalService.getPotentialRentals();
     }
 
-    @RequestMapping("getprentalbid/{name}") //get potential rental by name
+    @RequestMapping("getprentalbn/{name}") //get potential rental by name
     @ResponseBody
     public PotentialRental getPotentialRentalsByName(@PathVariable String name){
         return potentialRentalService.getPotentialRentalByName(name);
     }
 
-    @DeleteMapping("rm-potrbn/{id}")
+    @DeleteMapping("rm-potrbid/{id}")
     @ResponseBody
-    public List deletePotentialRentalByName(@PathVariable int id){
+    public List deletePotentialRentalById(@PathVariable int id){
         System.out.println("Given " +id);
-        potentialRentalService.removePotentialRentalByName(id);
+        potentialRentalService.removePotentialRentalById(id);
 
         return potentialRentalService.getPotentialRentals();
+    }
+
+    @DeleteMapping("rm-potrbn/{name}")
+    @ResponseBody
+    public List removePotentialRentalByName(@PathVariable String name){
+
+        System.out.println("This is the name we got "+name);
+        return potentialRentalService.removePotentialRentalByName(name);
+    }
+
+    @DeleteMapping("cpr")
+    @ResponseBody
+    public void clearPotentialRentals(){
+        potentialRentalService.clearAllPotentialRentals();
     }
 
     @RequestMapping("/potential-rental") //potential rent page route
@@ -60,6 +74,12 @@ public class WebController {
     public String returnPotenialRentalPage(){
 
         return "potentialRental";
+    }
+
+    @GetMapping("/getprs")
+    @ResponseBody
+    public int getPotentialRentalsListSize(){
+        return potentialRentalService.getPotentialRentalsLength();
     }
 
 

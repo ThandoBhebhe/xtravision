@@ -1,3 +1,22 @@
+clearList();
+
+
+function clearList(){
+
+    fetch('http://localhost:8080/cpr/',{
+
+        method: 'DELETE',
+        headers:{
+            'Accept': 'application/json',
+            'Content-Type':'application/json'
+        }
+
+    }).then(response =>{
+        return response.json()
+    }).then(data =>{
+        console.log(data)
+    })
+}
 
 getMovies()
 
@@ -8,7 +27,7 @@ function getMovies(){
     fetch(url,{
         "method":"GET",
         "headers": {
-            "x-rapidapi-key": "66e6c0fd2bmsha01312a7e1a48a9p154386jsn7c10950223d4",
+            "x-rapidapi-key": "e234bd6ff1msh8dbcc003e8e72f7p1a5721jsn32a79b5977eb",
             "x-rapidapi-host": "imdb8.p.rapidapi.com"
         }
     }).then( (response)=>{
@@ -29,7 +48,7 @@ function getMovies(){
                 let cover = movie.i.imageUrl
                 let title = movie.l
                 return `<div class="card-container">
-                        <div> <img value onclick="setClickedMovie(this.alt,this.src)" id="img-card" src=${cover} alt="${title}">
+                        <div> <img value onclick="setClickedMovie(this.alt,this.src)" class="img-card" id="${title}" src=${cover} alt="${title}">
                         </div>
                         <div class="card-info">
                             <p class="card-text">${title} </p>
@@ -48,38 +67,86 @@ function getMovies(){
 let clickedMovieName
 let clickedMovieImage
 function setClickedMovie(movieName, movieImage){
+
+
     clickedMovieName = movieName;
     clickedMovieImage = movieImage
     console.log(clickedMovieName+movieImage);
+    console.log('This is element got by class ')
+    console.log(document.getElementById(movieName))
 
+    let myElement = document.getElementById(movieName)
+    console.log('this is the element we got '+myElement)
+
+    let elementOpacity = window.getComputedStyle(myElement).getPropertyValue('opacity')
+    console.log('this is opacity of element '+elementOpacity)
+
+    potentialMovieObject = {
+        movieName: clickedMovieName,
+        movieCover:clickedMovieImage
+    }
+
+    if(elementOpacity == 1){
+
+//    make a post request to the backend with movie name and cover
+        fetch('http://localhost:8080/addprental/',{
+
+            method: 'POST',
+            headers:{
+                'Accept': 'application/json',
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(potentialMovieObject)
+
+
+        }).then( function (response){
+        }).then(data =>{
+            console.log(data)
+        })
+
+        myElement.style.opacity = 0.7
+    }else{
+        console.log("we are going to delete this")
+        console.log(potentialMovieObject.movieName)
+
+        fetch('http://localhost:8080/rm-potrbn/'+potentialMovieObject.movieName,{
+
+            method: 'DELETE',
+            headers:{
+                'Accept': 'application/json',
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(potentialMovieObject.movieName)
+
+
+        }).then( function (response){
+            console.log('posted to '+JSON.stringify(potentialMovieObject))
+            console.log('Post request complete', response)
+        }).then(data =>{
+
+            console.log('This is the size')
+            console.log(data)
+        })
+
+        myElement.style.opacity = 1
+    }
 
 }
 
 function selectedMovie(){
-  if(clickedMovieName == null) {
-      alert('Please select movie to rent')
-      window.location.href ='rent'
-  }else{
 
-      potentialMovieObject = {
-          movieName: clickedMovieName,
-          movieCover:clickedMovieImage
-      }
+    fetch('http://localhost:8080/getprs')
 
-//    make a post request to the backend with movie name and cover
-      fetch('http://localhost:8080/addprental',{
+        .then(response => {
+            return response.json()
+        }).then(data =>{
 
-          method: 'POST',
-          headers:{
-              'Accept': 'application/json',
-              'Content-Type':'application/json'
-          },
-          body: JSON.stringify(potentialMovieObject)
+        if(data === 0){
+            alert("Please choose a movie to rent")
+            window.location.href ='rent'
+        }else{
+            window.location.href = 'potential-rental'
+        }
 
-      }).then( function (response){
-          console.log('posted to '+JSON.stringify(potentialMovieObject))
-          console.log('Post request complete', response)
-      })
-      window.location.href = 'potential-rental'
-  }
+    })
 }

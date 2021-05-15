@@ -38,11 +38,6 @@ function populateTable(arrayOfMovies){
 }
 
 function removeRow() {
-    // get the td the click button belongs to
-    // let td = event.target.parentNode;
-    // let tr = td.parentNode; // select the row the td is is
-    //
-    // let movieId = event.target.id
 
     let td = event.target.parentNode;
     let tr = td.parentNode; // select the row the td is is
@@ -56,7 +51,7 @@ function removeRow() {
         movieName: movieId
     }
 
-    fetch('http://localhost:8080/rm-potrbn/'+movieId,{
+    fetch('http://localhost:8080/rm-potrbid/'+movieId,{
 
         method: 'DELETE',
         headers:{
