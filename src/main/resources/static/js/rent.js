@@ -23,7 +23,7 @@ function getMovies(){
             moviesArray.push(data.d[movieAtIndex]) //adding movies that come from the api to my movie moviesArray
         }
         let movie = moviesArray.map((movie)=>{
-            console.log(movie)
+            // console.log(movie)
 
             if(typeof movie.i !== 'undefined'){//some movies dont have an image so i check to not include them
                 let cover = movie.i.imageUrl
@@ -43,6 +43,7 @@ function getMovies(){
 
     })
 }
+
 //adding onclick listener on the com.xtravision.movie to fill the next page
 let clickedMovieName
 let clickedMovieImage
@@ -55,23 +56,30 @@ function setClickedMovie(movieName, movieImage){
 }
 
 function selectedMovie(){
-    potentialMovieObject = {
-                                movieName: clickedMovieName,
-                                movieCover:clickedMovieImage
-                            }
+  if(clickedMovieName == null) {
+      alert('Please select movie to rent')
+      window.location.href ='rent'
+  }else{
+
+      potentialMovieObject = {
+          movieName: clickedMovieName,
+          movieCover:clickedMovieImage
+      }
 
 //    make a post request to the backend with movie name and cover
-    fetch('http://localhost:8080/addprental',{
+      fetch('http://localhost:8080/addprental',{
 
-        method: 'POST',
-        headers:{
-            'Accept': 'application/json',
-            'Content-Type':'application/json'
-        },
-        body: JSON.stringify(potentialMovieObject)
+          method: 'POST',
+          headers:{
+              'Accept': 'application/json',
+              'Content-Type':'application/json'
+          },
+          body: JSON.stringify(potentialMovieObject)
 
-    }).then( function (response){
-        console.log('posted to '+JSON.stringify(potentialMovieObject))
-        console.log('Post request complete', response)
-    })
+      }).then( function (response){
+          console.log('posted to '+JSON.stringify(potentialMovieObject))
+          console.log('Post request complete', response)
+      })
+      window.location.href = 'potential-rental'
+  }
 }

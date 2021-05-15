@@ -40,10 +40,19 @@ public class WebController {
         return potentialRentalService.getPotentialRentals();
     }
 
-    @RequestMapping("getprentalbn/{name}") //get potential rental by name
+    @RequestMapping("getprentalbid/{name}") //get potential rental by name
     @ResponseBody
     public PotentialRental getPotentialRentalsByName(@PathVariable String name){
         return potentialRentalService.getPotentialRentalByName(name);
+    }
+
+    @DeleteMapping("rm-potrbn/{id}")
+    @ResponseBody
+    public List deletePotentialRentalByName(@PathVariable int id){
+        System.out.println("Given " +id);
+        potentialRentalService.removePotentialRentalByName(id);
+
+        return potentialRentalService.getPotentialRentals();
     }
 
     @RequestMapping("/potential-rental") //potential rent page route

@@ -19,7 +19,22 @@ public class PotentialRentalService {
 
     //go through the potentialRentals stream and get a movie that matches the given name
     public PotentialRental getPotentialRentalByName(String name){
+
         return potentialRentals.stream().filter(m ->m.getMovieName().equals(name)).findFirst().get();
+    }
+
+    public void removePotentialRentalByName(int id){
+        potentialRentals.remove(id);
+        System.out.println("Removed "+id);
+
+//        for(int i=0;i<potentialRentals.size()+1;i++){
+//            if(potentialRentals.get(i).getMovieName().equals(name)){
+//                System.out.println("went to "+ potentialRentals.get(i).getMovieName());
+//                potentialRentals.remove(i);
+//                System.out.println("Removed "+name);
+//            }
+//            break;
+//        }
     }
 
 }

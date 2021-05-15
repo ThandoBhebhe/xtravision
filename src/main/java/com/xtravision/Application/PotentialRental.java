@@ -4,16 +4,19 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class PotentialRental {
-    String movieName;
-    String movieCover;
+    private String movieName;
+    private String movieCover;
 
     public PotentialRental(){
 
     }
 
+
+
     public PotentialRental(String movieName, String movieCover) {
         this.movieName = movieName;
         this.movieCover = movieCover;
+
     }
 
     public String getMovieName() {

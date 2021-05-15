@@ -5,6 +5,7 @@ body{
     background-attachment: fixed;
     -webkit-filter: blur(0px);
 }
+
 .logo{
     display: block;
     margin: auto;
@@ -41,7 +42,7 @@ img.potential-rental{
 
 
 .card-container-description{
-    width: 800px;
+    width: 500px;
     height: 531px;
     display: inline-block;
     margin: 20px;
@@ -49,10 +50,24 @@ img.potential-rental{
     opacity: 50%;
 }
 
+.card-container-price{
+    width: 250px;
+    height: 531px;
+    display: inline-block;
+    margin: 20px;
+    background-color: #00000078;
+    opacity: 50%;
+}
 .description-paragraph{
     margin: 15% 10px 0;
     color: white;
     font-size: 20px;
+}
+
+.price{
+    margin: 250px 2% 150px;
+    font-size: 100px;
+    color: white;
 }
 
 .potential-image-cover{
@@ -96,4 +111,18 @@ img.potential-rental{
     opacity: 100%;
     align-content: center ;
     vertical-align: center;
+}
+
+table{
+    width: 100%;
+}
+
+.img-in-table{
+    height: 100px;
+}
+table{
+    border-collapse: collapse;
+    font-size: 30px;
+    opacity: 90%;
+    color: white;
 }
