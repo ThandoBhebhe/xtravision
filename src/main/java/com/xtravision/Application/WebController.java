@@ -13,9 +13,8 @@ public class WebController {
     PotentialRentalService potentialRentalService;
 
     @RequestMapping("/home") //home page route
-    public String returnIndexPage(Model welcomeModel){
+    public String returnIndexPage(){
 
-        welcomeModel.addAttribute("welcomeMessage","Welcome to XtraVision");
         return "index";
     }
 
