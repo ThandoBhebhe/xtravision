@@ -61,10 +61,29 @@ function removeRow() {
         body: JSON.stringify(potentialMovieObject)
 
     }).then( function (response){
-        console.log('posted to '+JSON.stringify(potentialMovieObject))
-        console.log('Post request complete', response)
+
     })
 
     tr.parentNode.removeChild(tr);
 }
+
+function checkThings(){
+
+    fetch('http://localhost:8080/getprs')
+
+        .then(response => {
+            return response.json()
+        }).then(data =>{
+
+        if(data === 0){
+            alert("Please choose a movie to rent")
+            window.location.href ='rent'
+        }else{
+            window.location.href = 'payment'
+        }
+
+    })
+}
+
+
 

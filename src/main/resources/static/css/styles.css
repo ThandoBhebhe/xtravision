@@ -6,10 +6,17 @@ body{
     -webkit-filter: blur(0px);
 }
 
+
 .logo{
     display: block;
     margin: auto;
     height: 200px
+}
+
+.question{
+    margin: 10% 26%;
+    color: white;
+
 }
 
 .rentMovieParagraph{
@@ -124,4 +131,9 @@ table{
     font-size: 30px;
     opacity: 90%;
     color: white;
+}
+
+.thePrice {
+    font-size: 70px;
+    color:white
 }
