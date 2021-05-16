@@ -106,9 +106,8 @@ img.potential-rental{
     padding: 10px;
 }
 
-#img-card{
+.img-card{
     max-width: 100%;
-    opacity: 100%;
     align-content: center ;
     vertical-align: center;
 }

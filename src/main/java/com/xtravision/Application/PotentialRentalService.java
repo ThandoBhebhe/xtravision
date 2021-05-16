@@ -23,19 +23,28 @@ public class PotentialRentalService {
         return potentialRentals.stream().filter(m ->m.getMovieName().equals(name)).findFirst().get();
     }
 
-    public void removePotentialRentalByName(int id){
+    public void removePotentialRentalById(int id){
         potentialRentals.remove(id);
         System.out.println("Removed "+id);
 
-//        for(int i=0;i<potentialRentals.size()+1;i++){
-//            if(potentialRentals.get(i).getMovieName().equals(name)){
-//                System.out.println("went to "+ potentialRentals.get(i).getMovieName());
-//                potentialRentals.remove(i);
-//                System.out.println("Removed "+name);
-//            }
-//            break;
-//        }
+
     }
+
+    public List removePotentialRentalByName(String givenName){
+
+        potentialRentals.removeIf(potentialRental -> potentialRental.getMovieName().equals(givenName));
+
+        return potentialRentals;
+    }
+
+    public int getPotentialRentalsLength(){
+        return potentialRentals.size();
+    }
+
+    public void clearAllPotentialRentals(){
+        potentialRentals.clear();
+    }
+
 
 }
 
