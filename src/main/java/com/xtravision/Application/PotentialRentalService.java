@@ -23,6 +23,10 @@ public class PotentialRentalService {
         return "success";
     }
 
+    public double getPrice(){
+        return potentialRentals.size()*2.99;
+    }
+
     //go through the potentialRentals stream and get a movie that matches the given name
     public PotentialRental getPotentialRentalByName(String name){
 

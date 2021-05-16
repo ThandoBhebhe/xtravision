@@ -26,6 +26,8 @@ public class WebController {
         return "rent";
     }
 
+
+
     @PostMapping("/addprental") // add potentialRental
     @ResponseBody
     public String addPotentialRental(@RequestBody PotentialRental potentialRentalMovie){
@@ -33,12 +35,7 @@ public class WebController {
         return potentialRentalService.createPotentialRentals(potentialRentalMovie);
     }
 
-    @PostMapping("/suvs")
-    @ResponseBody
-    public void setUserVisitationStatus(@RequestBody String trueOrFalse){
-        System.out.println("This is what we got "+trueOrFalse);
-        potentialRentalService.setVisitationStatus(trueOrFalse);
-    }
+
 
     @RequestMapping("getprentals") //get potential rentals
     @ResponseBody
@@ -76,11 +73,17 @@ public class WebController {
     }
 
     @RequestMapping("/potential-rental") //potential rent page route
-
     public String returnPotenialRentalPage(){
 
         return "potentialRental";
     }
+
+    @RequestMapping("/payment") //potential rent page route
+    public String returnPaymentPage(Model priceModel){
+        priceModel.addAttribute("price", potentialRentalService.getPrice());
+        return "payment";
+    }
+
 
     @GetMapping("/getprs")
     @ResponseBody
