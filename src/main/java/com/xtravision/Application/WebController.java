@@ -30,8 +30,7 @@ public class WebController {
     @ResponseBody
     public String addPotentialRental(@RequestBody PotentialRental potentialRentalMovie){
 
-        potentialRentalService.createPotentialRentals(potentialRentalMovie);
-        return "Success";
+        return potentialRentalService.createPotentialRentals(potentialRentalMovie);
     }
 
     @RequestMapping("getprentals") //get potential rentals

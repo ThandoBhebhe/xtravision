@@ -13,8 +13,14 @@ public class PotentialRentalService {
     public List<PotentialRental> getPotentialRentals(){
         return this.potentialRentals;
     }
-    public void createPotentialRentals(PotentialRental potentialRentalMovie){
+    public String createPotentialRentals(PotentialRental potentialRentalMovie){
+        //gonna take into accounts whether theyre a first time user or not
+
+        if(potentialRentals.size() == 4){
+            return "You cant rent more than 4 movies";
+        }
         potentialRentals.add(potentialRentalMovie);
+        return "success";
     }
 
     //go through the potentialRentals stream and get a movie that matches the given name
