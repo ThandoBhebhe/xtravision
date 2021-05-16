@@ -2,6 +2,13 @@
 
 # Xtra-Vision
 
+## What you will need
+An internet connection since this app makes a request to the IMDb alternative to get movies that exist in the IMDb database
+
+https://rapidapi.com/rapidapi/api/movie-database-imdb-alternative
+
+We also make request to our custom backend but you should be fine as long as app is running in your IDE
+
 ## How to use
 Suggesting you aleady downloaded the project. 
 
