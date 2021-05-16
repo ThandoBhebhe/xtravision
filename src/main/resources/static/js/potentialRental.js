@@ -61,8 +61,7 @@ function removeRow() {
         body: JSON.stringify(potentialMovieObject)
 
     }).then( function (response){
-        console.log('posted to '+JSON.stringify(potentialMovieObject))
-        console.log('Post request complete', response)
+
     })
 
     tr.parentNode.removeChild(tr);

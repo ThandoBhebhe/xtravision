@@ -12,6 +12,12 @@ body{
     height: 200px
 }
 
+.question{
+    margin: 10% 26%;
+    color: white;
+
+}
+
 .rentMovieParagraph{
     text-align: center;
 }

@@ -14,7 +14,7 @@ public class PotentialRentalService {
         return this.potentialRentals;
     }
     public String createPotentialRentals(PotentialRental potentialRentalMovie){
-        //gonna take into accounts whether theyre a first time user or not
+        //in futurs we can check if its the users first time or a allow the amount they can rent based on that
 
         if(potentialRentals.size() == 4){
             return "You cant rent more than 4 movies";

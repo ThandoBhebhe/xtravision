@@ -33,6 +33,13 @@ public class WebController {
         return potentialRentalService.createPotentialRentals(potentialRentalMovie);
     }
 
+    @PostMapping("/suvs")
+    @ResponseBody
+    public void setUserVisitationStatus(@RequestBody String trueOrFalse){
+        System.out.println("This is what we got "+trueOrFalse);
+        potentialRentalService.setVisitationStatus(trueOrFalse);
+    }
+
     @RequestMapping("getprentals") //get potential rentals
     @ResponseBody
     public List<PotentialRental> getPotentialRentals(){

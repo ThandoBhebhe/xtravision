@@ -6,21 +6,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 
     <title>XtraVision</title>
 
 </head>
 <body>
 
-    <h1 th:text="${welcomeMessage}"></h1>
-    <a href="www.xtravision.com">Official site</a>
+<!--    <h1 th:text="${welcomeMessage}"></h1>-->
 
-    <button class="front-buttons">
-        <a href="rent">TOUCH TO RENT</a><br>
-        <a href="x">TOUCH TO RETURN</a>
-    </button>
+    <img class="logo" src="../images/xtra-vision_logo.jpg" alt="xtra-vision logo">
 
-<script src="../js/rent.js"></script>
+
+
+    <div class="container">
+        <h1 class="question">Are you a first time user?</h1>
+        <div class="row align-items-start">
+
+            <div class="col rentActionButtons">
+
+                <a id="true" type="button" class="btn btn-success" onclick="setUsersVisitation('true')"> Yes</a>
+                <button id ="false" type="button" class="btn btn-danger " onclick="setUsersVisitation('false')">No</button>
+            </div>
+        </div>
+    </div>
+<script src="../js/home.js"></script>
 </body>
 </html>
