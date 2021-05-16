@@ -30,7 +30,7 @@ function populateTable(arrayOfMovies){
     for(i =0;i<arrayOfMovies.length;i++){
 
         let row = table.insertRow(i)
-        row.setAttribute('id',i)
+        row.setAttribute('id',arrayOfMovies[i].movieName)
         row.insertCell(0).innerHTML = '<img class="img-in-table" src="'+arrayOfMovies[i].movieCover+'"img>'
         row.insertCell(1).innerHTML= '2.99'
         row.insertCell(2).innerHTML= '<td> <button id="'+arrayOfMovies[i].movieName+'" type="button" class="btn btn-danger " onclick="removeRow()">Remove</button>'
@@ -42,16 +42,16 @@ function removeRow() {
     let td = event.target.parentNode;
     let tr = td.parentNode; // select the row the td is is
 
-    let movieId = tr.id
-    console.log(movieId)
+    let movieName = tr.id
+    console.log(movieName)
 
-    console.log('This is the ID being used'+movieId)
+    console.log('This is the ID being used'+movieName)
 
     potentialMovieObject = {
-        movieName: movieId
+        movieName: movieName
     }
 
-    fetch('http://localhost:8080/rm-potrbid/'+movieId,{
+    fetch('http://localhost:8080/rm-potrbn/'+movieName,{
 
         method: 'DELETE',
         headers:{

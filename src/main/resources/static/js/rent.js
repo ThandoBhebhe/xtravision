@@ -69,7 +69,7 @@ let clickedMovieImage
 function setClickedMovie(movieName, movieImage){
 
 
-    clickedMovieName = movieName;
+    clickedMovieName = movieName
     clickedMovieImage = movieImage
     console.log(clickedMovieName+movieImage);
     console.log('This is element got by class ')
@@ -99,9 +99,17 @@ function setClickedMovie(movieName, movieImage){
             body: JSON.stringify(potentialMovieObject)
 
 
-        }).then( function (response){
+        }).then( response =>{
+
+            return response.text()
         }).then(data =>{
+            console.log('Tried to add, got this')
             console.log(data)
+            if (data != 'success'){
+                console.log(data)
+                alert(data)
+                myElement.style.opacity = 1
+            }
         })
 
         myElement.style.opacity = 0.7
